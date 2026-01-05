@@ -1,4 +1,7 @@
-import { Component, signal } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
+import { Component, OnInit, signal } from '@angular/core';
+import { Product } from './Models/Product';
+import { Pagination } from './Models/Paging';
 
 @Component({
   selector: 'app-root',
@@ -6,6 +9,28 @@ import { Component, signal } from '@angular/core';
   standalone: false,
   styleUrl: './app.scss'
 })
-export class App {
+export class App implements OnInit {
   protected readonly title = signal('E-commerceClient');
+
+  constructor(private HTTP:HttpClient){
+
+  }
+  
+  products:Product[] = [];
+
+  ngOnInit(): void {
+     this.HTTP.get<Pagination<Product[]>>("https://localhost:7189/api/Product?pageSize=50").subscribe({
+      next: (response) => {
+        this.products = response.data;
+        console.log('Products loaded', response);
+      },
+      error: (error) => {
+        console.error('There was an error!', error);
+      },
+      complete: () => {
+        console.log('Request completed');
+      }
+     });
+  }
+
 }

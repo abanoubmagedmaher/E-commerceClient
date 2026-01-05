@@ -1,2 +1,11 @@
 <app-nav-bar></app-nav-bar>
 <h1>Welocome to my Application </h1>
+
+
+@for (item of products; track item.name) {
+<li>{{ item.name }}</li>
+<li>{{ item.price | currency }}</li>
+}
+@empty {
+<li>There are no items.</li>
+}
