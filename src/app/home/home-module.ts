@@ -12,6 +12,10 @@ import { Home } from './home/home';
   imports: [
     CommonModule,
     HomeRoutingModule
+  ],
+  exports:[
+    Home
   ]
+
 })
 export class HomeModule { }

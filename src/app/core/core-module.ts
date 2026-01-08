@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 
 import { CoreRoutingModule } from './core-routing-module';
 import { NavBar } from './nav-bar/nav-bar';
+import { RouterModule } from '@angular/router';
 
 
 @NgModule({
@@ -11,7 +12,8 @@ import { NavBar } from './nav-bar/nav-bar';
   ],
   imports: [
     CommonModule,
-    CoreRoutingModule
+    CoreRoutingModule,
+    RouterModule
   ],
   exports: [
     NavBar

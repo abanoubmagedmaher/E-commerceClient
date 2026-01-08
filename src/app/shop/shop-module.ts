@@ -5,6 +5,7 @@ import { ShopRoutingModule } from './shop-routing-module';
 import { Shop } from './shop/shop';
 import { ProductItem } from './product-item/product-item';
 import { ProductDetails } from './product-details/product-details';
+import { RouterModule } from '@angular/router';
 
 
 @NgModule({
@@ -15,7 +16,8 @@ import { ProductDetails } from './product-details/product-details';
   ],
   imports: [
     CommonModule,
-    ShopRoutingModule
+    ShopRoutingModule,
+    RouterModule
   ],
   exports:[
     Shop

@@ -5,6 +5,7 @@ import { AppRoutingModule } from './app-routing-module';
 import { App } from './app';
 import { CoreModule } from './core/core-module';
 import { ShopModule } from './shop/shop-module';
+import { HomeModule } from './home/home-module';
 
 @NgModule({
   declarations: [
@@ -14,7 +15,8 @@ import { ShopModule } from './shop/shop-module';
     BrowserModule,
     AppRoutingModule,
     CoreModule,
-    ShopModule
+    ShopModule,
+    HomeModule
   ],
   providers: [
     provideBrowserGlobalErrorListeners()
