@@ -9,7 +9,7 @@ import { Observable } from 'rxjs';
 })
 export class ShopService {
   constructor(private http:HttpClient) {}
-  baseUrl="https://localhost:7189/api/";
+  baseUrl="http://localhost:5044/api/";
 
   getProduct(): Observable<Pagination<Product[]>> 
   {
