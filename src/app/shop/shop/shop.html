@@ -19,7 +19,14 @@
       <div class="mb-4">
         <h6 class="fw-bold text-warning text-uppercase">Brands</h6>
         <ul class="list-group my-3">
-          <li class="list-group-item " *ngFor="let brand of brands">{{ brand.name }}</li>
+          <li class="list-group-item " *ngFor="let brand of brands"
+          [class.active]="brand.id === brandIdSelected"
+          [value]="brand.id"
+          (click)="onBrandSelected(brand.id)"
+          >
+            {{ brand.name }}
+
+          </li>
         </ul>
       </div>
 
@@ -27,7 +34,13 @@
       <div class="mb-4">
         <h6 class="fw-bold text-warning text-uppercase">Types</h6>
         <ul class="list-group my-3">
-          <li class="list-group-item" *ngFor="let type of types">{{ type.name }}</li>
+          <li class="list-group-item" *ngFor="let type of types"
+          [class.active]="type.id=== typeIdSelectedId"]
+          [value]="type.id"
+          (click)="onTypeSelected(type.id)"
+          >
+            {{ type.name }}
+          </li>
         </ul>
       </div>
 
@@ -86,4 +99,3 @@
 
   </div>
 </div>
-

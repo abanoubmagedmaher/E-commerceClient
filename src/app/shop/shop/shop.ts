@@ -15,6 +15,9 @@ export class Shop implements OnInit {
   brands: Brand[] = [];
   types: Type[] = [];
 
+  brandIdSelected = 0;
+  typeIdSelectedId = 0;
+
   ngOnInit(): void {
     this.getProducts();
     this.getBrands();
@@ -22,7 +25,7 @@ export class Shop implements OnInit {
   }
 
   getProducts() {
-    this.shopService.getProduct().subscribe({
+    this.shopService.getProduct(this.brandIdSelected, this.typeIdSelectedId).subscribe({
       next: (response) => {
         this.products = response.data;
         console.log('Products fetched successfully:', this.products);
@@ -39,7 +42,7 @@ export class Shop implements OnInit {
   getBrands() {
     this.shopService.getBrands().subscribe({
       next: (response) => {
-        this.brands = response;
+        this.brands = [{id:0,name:'All'}, ...response]; // spred Operator to add 'All' option then the fetched brands
         console.log('Brands fetched successfully:', this.brands);
       },
       error: (error) => {
@@ -53,7 +56,7 @@ export class Shop implements OnInit {
   getTypes() {
     this.shopService.getTypes().subscribe({
       next: (response) => {
-        this.types = response;
+        this.types = [{id:0,name:'All'}, ...response]; // spred Operator to add 'All' option then the fetched types
         console.log('Types fetched successfully:', this.types);
       },
       error: (error) => {
@@ -63,6 +66,16 @@ export class Shop implements OnInit {
         console.log('Type fetch completed.');
       }
     })
+  }
+ 
+  onBrandSelected(brandId: number) {
+    this.brandIdSelected = brandId;
+    this.getProducts();
+  }
+
+  onTypeSelected(typeId: number) {
+    this.typeIdSelectedId = typeId;
+    this.getProducts();
   }
 
 }
