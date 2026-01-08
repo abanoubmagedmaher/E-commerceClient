@@ -12,6 +12,9 @@ import { Shop } from './shop/shop';
   imports: [
     CommonModule,
     ShopRoutingModule
+  ],
+  exports:[
+    Shop
   ]
 })
 export class ShopModule { }

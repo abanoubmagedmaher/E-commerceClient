@@ -1,8 +1,18 @@
+import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { Pagination } from '../shared/Models/Paging';
+import { Product } from '../shared/Models/Product';
+import { Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root',
 })
 export class ShopService {
-  constructor() {}
+  constructor(private http:HttpClient) {}
+  baseUrl="https://localhost:7189/api/";
+
+  getProduct(): Observable<Pagination<Product[]>> 
+  {
+    return this.http.get<Pagination<Product[]>>(this.baseUrl + 'Product');
+  }
 }

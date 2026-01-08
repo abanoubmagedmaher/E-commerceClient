@@ -9,28 +9,13 @@ import { Pagination } from './shared/Models/Paging';
   standalone: false,
   styleUrl: './app.scss'
 })
-export class App implements OnInit {
+export class App  {
   protected readonly title = signal('E-commerceClient');
 
-  constructor(private HTTP:HttpClient){
+  constructor(){
 
   }
   
-  products:Product[] = [];
-
-  ngOnInit(): void {
-     this.HTTP.get<Pagination<Product[]>>("https://localhost:7189/api/Product?pageSize=50").subscribe({
-      next: (response) => {
-        this.products = response.data;
-        console.log('Products loaded', response);
-      },
-      error: (error) => {
-        console.error('There was an error!', error);
-      },
-      complete: () => {
-        console.log('Request completed');
-      }
-     });
-  }
+ 
 
 }
