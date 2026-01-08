@@ -3,6 +3,7 @@ import { ShopService } from '../shop-service';
 import { Product } from '../../shared/Models/Product';
 import { Brand } from '../../shared/Models/brands';
 import { Type } from '../../shared/Models/types';
+import { ShopParams } from '../../shared/Models/shopParams';
 @Component({
   selector: 'app-shop',
   standalone: false,
@@ -14,17 +15,16 @@ export class Shop implements OnInit {
   products: Product[] = [];
   brands: Brand[] = [];
   types: Type[] = [];
-
-  brandIdSelected = 0;
-  typeIdSelectedId = 0;
-
+totalCount=0;
+ 
+  ShopParams: ShopParams = new ShopParams();
   sortOptions=[
     {name:'Alphabetical',value:'name'},
     {name:'Price: Low to High',value:'priceAsc'},
     {name:'Price: High to Low',value:'priceDesc'},
   
   ]
-  sordSelected='name';
+ 
 
   ngOnInit(): void {
     this.getProducts();
@@ -33,10 +33,13 @@ export class Shop implements OnInit {
   }
 
   getProducts() {
-    this.shopService.getProduct(this.brandIdSelected, this.typeIdSelectedId,this.sordSelected).subscribe({
+    this.shopService.getProduct(this.ShopParams).subscribe({
       next: (response) => {
         this.products = response.data;
         console.log('Products fetched successfully:', this.products);
+        this.ShopParams.pageNumber=response.pageIndex;
+        this.ShopParams.pageSize=response.pageSize;
+        this.totalCount=response.count;
       },
       error: (error) => {
         console.error('Error fetching products:', error);
@@ -77,17 +80,17 @@ export class Shop implements OnInit {
   }
  
   onBrandSelected(brandId: number) {
-    this.brandIdSelected = brandId;
+    this.ShopParams.brandId = brandId;
     this.getProducts();
   }
 
   onTypeSelected(typeId: number) {
-    this.typeIdSelectedId = typeId;
+    this.ShopParams.typeId = typeId;
     this.getProducts();
   }
 
   onSortedSelected(event:any){
-    this.sordSelected=event.target.value;
+    this.ShopParams.sort=event.target.value;
     this.getProducts();
   }
 }

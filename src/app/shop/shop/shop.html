@@ -19,7 +19,7 @@
         <h6 class="fw-bold text-warning text-uppercase">Brands</h6>
         <ul class="list-group my-3">
           <li class="list-group-item " *ngFor="let brand of brands"
-          [class.active]="brand.id === brandIdSelected"
+          [class.active]="brand.id === ShopParams.brandId"
           [value]="brand.id"
           (click)="onBrandSelected(brand.id)"
           >
@@ -34,7 +34,7 @@
         <h6 class="fw-bold text-warning text-uppercase">Types</h6>
         <ul class="list-group my-3">
           <li class="list-group-item" *ngFor="let type of types"
-          [class.active]="type.id=== typeIdSelectedId"]
+          [class.active]="type.id=== ShopParams.typeId"
           [value]="type.id"
           (click)="onTypeSelected(type.id)"
           >
@@ -55,26 +55,6 @@
         <button class="btn btn-outline-secondary">Reset</button>
       </div>
 
-      <!-- Pagination (Top) -->
-      <nav class="mb-4 d-flex justify-content-center">
-        <ul class="pagination">
-          <li class="page-item disabled">
-            <span class="page-link">Previous</span>
-          </li>
-          <li class="page-item active">
-            <span class="page-link">1</span>
-          </li>
-          <li class="page-item">
-            <span class="page-link">2</span>
-          </li>
-          <li class="page-item">
-            <span class="page-link">3</span>
-          </li>
-          <li class="page-item">
-            <span class="page-link">Next</span>
-          </li>
-        </ul>
-      </nav>
 
       <!-- Product Cards -->
       <div class="shop-container">
@@ -95,6 +75,27 @@
       <!-- End Product Cards -->
 
     </main>
+
+        <!-- Pagination (Top) -->
+      <nav class="mb-4 d-flex justify-content-center">
+        <ul class="pagination">
+          <li class="page-item disabled">
+            <span class="page-link">Previous</span>
+          </li>
+          <li class="page-item active">
+            <span class="page-link">1</span>
+          </li>
+          <li class="page-item">
+            <span class="page-link">2</span>
+          </li>
+          <li class="page-item">
+            <span class="page-link">3</span>
+          </li>
+          <li class="page-item">
+            <span class="page-link">Next</span>
+          </li>
+        </ul>
+      </nav>
 
   </div>
 </div>

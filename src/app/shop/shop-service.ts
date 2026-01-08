@@ -5,6 +5,7 @@ import { Product } from '../shared/Models/Product';
 import { Observable } from 'rxjs';
 import { Brand } from '../shared/Models/brands';
 import {Type} from '../shared/Models/types';
+import { ShopParams } from '../shared/Models/shopParams';
 @Injectable({
   providedIn: 'root',
 })
@@ -12,16 +13,16 @@ export class ShopService {
   constructor(private http:HttpClient) {}
   baseUrl="http://localhost:5044/api/";
 
-  getProduct(brandId?:number, typeId?:number,sort?:string): Observable<Pagination<Product[]>> 
+  getProduct(ShopParams: ShopParams): Observable<Pagination<Product[]>> 
   {
     let params= new HttpParams();
-    if(brandId)
-      params=params.append('brandId', brandId);
-    if(typeId)
-      params=params.append('typeId', typeId);
-    if(sort)
-      params=params.append('sort',sort);
-    
+    if(ShopParams.brandId>0)
+      params=params.append('brandId', ShopParams.brandId);
+    if(ShopParams.typeId>0)
+      params=params.append('typeId', ShopParams.typeId);
+    if(ShopParams.sort)
+      params=params.append('sort',ShopParams.sort);
+
     return this.http.get<Pagination<Product[]>>(this.baseUrl + 'Product',{params:params});
   }
 
