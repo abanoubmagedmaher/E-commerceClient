@@ -6,12 +6,11 @@
 
       <!-- Sort -->
       <div class="mb-4">
-        <h6 class="fw-bold text-uppercase">Sort</h6>
-        <select class="form-select">
-          <option selected>Name (A–Z)</option>
-          <option>Name (Z–A)</option>
-          <option>Price: Low to High</option>
-          <option>Price: High to Low</option>
+        <h6 class="fw-bold text-warning text-uppercase">Sort</h6>
+        <select class="form-select mb-4" (change)="onSortedSelected($event)">
+          <option *ngFor="let option of sortOptions" [value]="option.value">
+            {{ option.name }}
+          </option>
         </select>
       </div>
 

@@ -18,6 +18,14 @@ export class Shop implements OnInit {
   brandIdSelected = 0;
   typeIdSelectedId = 0;
 
+  sortOptions=[
+    {name:'Alphabetical',value:'name'},
+    {name:'Price: Low to High',value:'priceAsc'},
+    {name:'Price: High to Low',value:'priceDesc'},
+  
+  ]
+  sordSelected='name';
+
   ngOnInit(): void {
     this.getProducts();
     this.getBrands();
@@ -25,7 +33,7 @@ export class Shop implements OnInit {
   }
 
   getProducts() {
-    this.shopService.getProduct(this.brandIdSelected, this.typeIdSelectedId).subscribe({
+    this.shopService.getProduct(this.brandIdSelected, this.typeIdSelectedId,this.sordSelected).subscribe({
       next: (response) => {
         this.products = response.data;
         console.log('Products fetched successfully:', this.products);
@@ -78,4 +86,8 @@ export class Shop implements OnInit {
     this.getProducts();
   }
 
+  onSortedSelected(event:any){
+    this.sordSelected=event.target.value;
+    this.getProducts();
+  }
 }
