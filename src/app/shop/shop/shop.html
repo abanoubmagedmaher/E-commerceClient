@@ -50,12 +50,11 @@
 
       <!-- Search -->
       <div class="d-flex gap-2 mb-4">
-        <input type="text" class="form-control" placeholder="Search products..." />
-        <button class="btn btn-primary">Search</button>
-        <button class="btn btn-outline-secondary">Reset</button>
+        <input type="text" class="form-control" (keyup.enter)="onSearch()" placeholder="Search products..." #search/>
+        <button class="btn btn-primary" (click)="onSearch()">Search</button>
+        <button class="btn btn-outline-secondary" (click)="onReset()">Reset</button>
       </div>
-
-
+      
       <!-- Product Cards -->
       <div class="shop-container">
 
