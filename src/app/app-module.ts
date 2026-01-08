@@ -3,16 +3,16 @@ import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing-module';
 import { App } from './app';
-import { NavBar } from './nav-bar/nav-bar';
+import { CoreModule } from './core/core-module';
 
 @NgModule({
   declarations: [
     App,
-    NavBar
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    CoreModule
   ],
   providers: [
     provideBrowserGlobalErrorListeners()
