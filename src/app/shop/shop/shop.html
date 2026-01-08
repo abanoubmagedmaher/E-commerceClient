@@ -17,23 +17,17 @@
 
       <!-- Brands -->
       <div class="mb-4">
-        <h6 class="fw-bold text-uppercase">Brands</h6>
-        <ul class="list-group list-group-flush">
-          <li class="list-group-item active">All</li>
-          <li class="list-group-item">Apple</li>
-          <li class="list-group-item">Samsung</li>
-          <li class="list-group-item">Sony</li>
+        <h6 class="fw-bold text-warning text-uppercase">Brands</h6>
+        <ul class="list-group my-3">
+          <li class="list-group-item " *ngFor="let brand of brands">{{ brand.name }}</li>
         </ul>
       </div>
 
       <!-- Types -->
       <div class="mb-4">
-        <h6 class="fw-bold text-uppercase">Types</h6>
-        <ul class="list-group list-group-flush">
-          <li class="list-group-item active">All</li>
-          <li class="list-group-item">Phone</li>
-          <li class="list-group-item">Laptop</li>
-          <li class="list-group-item">Accessory</li>
+        <h6 class="fw-bold text-warning text-uppercase">Types</h6>
+        <ul class="list-group my-3">
+          <li class="list-group-item" *ngFor="let type of types">{{ type.name }}</li>
         </ul>
       </div>
 

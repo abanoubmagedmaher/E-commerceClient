@@ -3,7 +3,8 @@ import { Injectable } from '@angular/core';
 import { Pagination } from '../shared/Models/Paging';
 import { Product } from '../shared/Models/Product';
 import { Observable } from 'rxjs';
-
+import { Brand } from '../shared/Models/brands';
+import {Type} from '../shared/Models/types';
 @Injectable({
   providedIn: 'root',
 })
@@ -15,4 +16,14 @@ export class ShopService {
   {
     return this.http.get<Pagination<Product[]>>(this.baseUrl + 'Product');
   }
+
+  getBrands():Observable<Brand[]>
+  {
+    return this.http.get<Brand[]>(this.baseUrl +"Product/brands");
+  }
+
+  getTypes():Observable<Type[]>{
+    return this.http.get<Type[]>(this.baseUrl + "product/types");
+  }
+
 }
