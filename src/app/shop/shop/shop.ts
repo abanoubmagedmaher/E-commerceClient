@@ -10,13 +10,13 @@ import { Product } from '../../shared/Models/Product';
 })
 export class Shop implements OnInit{
   constructor(private shopService:ShopService) {}
-  product:Product[]=[];
+  products:Product[]=[];
   
   ngOnInit(): void {
     this.shopService.getProduct().subscribe({
       next:(response)=>{
-        this.product=response.data;
-        console.log('Products fetched successfully:', this.product);
+        this.products=response.data;
+        console.log('Products fetched successfully:', this.products);
       },
       error:(error)=>{
         console.error('Error fetching products:', error);
