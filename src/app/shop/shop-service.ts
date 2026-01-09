@@ -36,4 +36,7 @@ export class ShopService {
     return this.http.get<Type[]>(this.baseUrl + "product/types");
   }
 
+  getProductById(id:number):Observable<Product>{
+    return this.http.get<Product>(this.baseUrl + 'product/' + id)
+  }
 }

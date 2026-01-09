@@ -4,6 +4,7 @@ import { Product } from '../../shared/Models/Product';
 import { Brand } from '../../shared/Models/brands';
 import { Type } from '../../shared/Models/types';
 import { ShopParams } from '../../shared/Models/shopParams';
+import { ToastrService } from 'ngx-toastr';
 @Component({
   selector: 'app-shop',
   standalone: false,
@@ -11,7 +12,7 @@ import { ShopParams } from '../../shared/Models/shopParams';
   styleUrl: './shop.scss',
 })
 export class Shop implements OnInit {
-  constructor(private shopService: ShopService) { }
+  constructor(private shopService: ShopService,private toastr:ToastrService) { }
   @ViewChild('search')searchTerm?:ElementRef;
   products: Product[] = [];
   brands: Brand[] = [];
@@ -41,6 +42,7 @@ totalCount=0;
         this.ShopParams.pageNumber=response.pageIndex;
         this.ShopParams.pageSize=response.pageSize;
         this.totalCount=response.count;
+        this.toastr.success("Success","Success Get Products :)")
       },
       error: (error) => {
         console.error('Error fetching products:', error);

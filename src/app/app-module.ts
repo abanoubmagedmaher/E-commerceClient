@@ -15,7 +15,6 @@ import { HomeModule } from './home/home-module';
     BrowserModule,
     AppRoutingModule,
     CoreModule,
-    ShopModule,
     HomeModule
   ],
   providers: [
